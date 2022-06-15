@@ -1,0 +1,19 @@
+npmScopes:
+  magyar-bankholding-zrt:
+    # Do not edit this section! See the following page for more info:
+    # https://mkb-sys.atlassian.net/wiki/spaces/NWD/pages/193462330/
+    npmRegistryServer: 'https://npm.pkg.github.com'
+    npmPublishRegistry: 'https://npm.pkg.github.com'
+    npmAuthToken: ${NODE_AUTH_TOKEN-}
+
+plugins:
+  - path: .yarn/plugins/@yarnpkg/plugin-typescript.cjs
+    spec: '@yarnpkg/plugin-typescript'
+
+packageExtensions:
+  # See https://github.com/prisma/prisma/issues/1439#issuecomment-775050033
+  '@prisma/client@*':
+    dependencies:
+      '.prisma': 'link:See "resolution" field of package.json'
+
+yarnPath: .yarn/releases/yarn-3.2.0.cjs
